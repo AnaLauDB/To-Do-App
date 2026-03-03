@@ -1,8 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #FEE1D3 0%, #FFD5FB 100%);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
 
 .logo {
@@ -11,9 +22,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +35,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -34,9 +48,258 @@
 }
 
 .card {
-  padding: 2em;
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 60px rgba(109, 1, 1, 0.15);
+  animation: slideIn 0.5s ease-out;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  background: linear-gradient(135deg, #C0D6FF 0%, #634bec 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+}
+
+/* INPUT */
+input[type="text"] {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #C0D6FF;
+  border-radius: 12px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  background-color: #FEE1D3;
+  color: #6D0101;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #C0D6FF;
+  box-shadow: 0 0 0 4px rgba(192, 214, 255, 0.2);
+  background-color: #fff;
+}
+
+input[type="text"]::placeholder {
+  color: #C0D6FF;
+  opacity: 0.7;
+}
+
+/* BOTÓN AGREGAR */
+.agregar {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #C0D6FF 0%, #6D0101 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 25px rgba(192, 214, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.agregar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(192, 214, 255, 0.4);
+  background: linear-gradient(135deg, #FFD5FB 0%, #C0D6FF 100%);
+}
+
+.agregar:active {
+  transform: translateY(-1px);
+}
+
+/* LISTA DE TAREAS */
+ul {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+li {
+  background: linear-gradient(135deg, #FEE1D3 0%, #FFD5FB 100%);
+  border-left: 5px solid #C0D6FF;
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+  border-radius: 12px;
+  animation: fadeIn 0.3s ease-out;
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 10px 25px rgba(192, 214, 255, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+li p {
+  color: #6D0101;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+li p:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* BOTÓN ELIMINAR */
+.eliminar {
+  background: linear-gradient(135deg, #6D0101 0%, #C18D17 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 5px 15px rgba(109, 1, 1, 0.2);
+}
+
+.eliminar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(109, 1, 1, 0.3);
+}
+
+.eliminar:active {
+  transform: scale(0.98);
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #C0D6FF;
+  margin-left: 0.5rem;
+}
+
+label {
+  color: #6D0101;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* LÍNEA DIVISORA */
+hr {
+  border: none;
+  border-top: 2px solid #C0D6FF;
+  margin: 1.2rem 0;
+  opacity: 0.3;
+}
+
+/* RESUMEN DE TAREAS */
+.resumen {
+  background: linear-gradient(135deg, #C0D6FF 0%, #FFD5FB 100%);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 5px solid #C0D6FF;
+}
+
+.resumen p {
+  color: #6D0101;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .card {
+    padding: 2rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  input[type="text"] {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .agregar {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  li {
+    padding: 1.2rem;
+  }
+
+  .eliminar {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  input[type="text"] {
+    padding: 0.8rem;
+  }
+
+  li {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  li p {
+    font-size: 0.95rem;
+  }
+
+  .eliminar {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
 }
