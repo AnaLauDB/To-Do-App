@@ -51,38 +51,48 @@ export default function ToDoList() {
     const pendientes = tareas.length - completadas;
 
     return (
-        <div>
-            <h1>Lista de Tareas</h1>
+        <div className="card">
+            <h1>📋 Mi Lista de Tareas</h1>
             <input
                 type="text"
                 value={texto}
                 onChange={(e) => setTexto(e.target.value)}
-                placeholder="Nueva tarea..."
+                placeholder="¿Qué necesitas hacer hoy?"
+                onKeyPress={(e) => e.key === 'Enter' && agregarTarea()}
             />
-            <button onClick={agregarTarea} className="boton">
-                Agregar
+            <button onClick={agregarTarea} className="agregar">
+                ✨ Agregar Tarea
             </button>
-            {tareas.map((tarea) => (
-                <li key={tarea.id} >
-                    <p>Tarea: {tarea.texto}</p>
-                    <p>Id: {tarea.id}</p>
-                    <button onClick={() => eliminarTarea(tarea.id)} className="boton">
-                        Eliminar
-                    </button>
-                    <label>Completar:</label>
-                    <input
-                        type="checkbox"
-                        checked={tarea.completada}
-                        onChange={() => toggleCompletada(tarea.id)}
-                    />
-                    <hr />
-                </li>
-            ))}
-            <p>Total de tareas: {tareas.length}</p>
-            <p>Tareas completadas: {completadas}</p>
-            <p>Tareas pendientes: {pendientes}</p>
+            {tareas.length === 0 ? (
+                <p style={{ color: '#C18D17', fontSize: '1.1rem', margin: '2rem 0' }}>
+                    📝 ¡Agrega tu primera tarea!
+                </p>
+            ) : (
+                <ul>
+                    {tareas.map((tarea) => (
+                        <li key={tarea.id}>
+                            <p>📌 {tarea.texto}</p>
+                            <p>ID: {tarea.id}</p>
+                            <button onClick={() => eliminarTarea(tarea.id)} className="eliminar">
+                                🗑️ Eliminar
+                            </button>
+                            <label>✓ Completar:</label>
+                            <input
+                                type="checkbox"
+                                checked={tarea.completada}
+                                onChange={() => toggleCompletada(tarea.id)}
+                            />
+                            <hr />
+                        </li>
+                    ))}
+                </ul>
+            )}
+            <div className="resumen">
+                <p>📊 Total de tareas: {tareas.length}</p>
+                <p>✅ Tareas completadas: {completadas}</p>
+                <p>⏳ Tareas pendientes: {pendientes}</p>
+            </div>
         </div>
-
     );
 
 }
